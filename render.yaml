@@ -10,7 +10,8 @@ services:
       yarn medusa build
       echo "==== Medusa build terminado ===="
       ls -la .medusa/client
-      cp -r .medusa/client .medusa/server/admin
+      mkdir -p apps/medusa/.medusa/server/admin
+      cp -r .medusa/client/* apps/medusa/.medusa/server/admin/
       echo "==== Admin copiado ===="
       yarn build
       echo "==== Backend build terminado ===="
