@@ -14,7 +14,7 @@ services:
       echo "==== Admin copiado correctamente ===="
       yarn build
       echo "==== Backend build terminado ===="
-    startCommand: yarn start
+    startCommand: PORT=${PORT:-9000} yarn start
     autoDeploy: true
     envVars:
       - key: NODE_ENV
