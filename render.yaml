@@ -6,24 +6,25 @@ services:
     plan: free
     buildCommand: |
       echo "==== Iniciando Build ===="
+
       yarn install --frozen-lockfile
       echo "==== Dependencias instaladas ===="
-      
+
       yarn medusa build
       echo "==== Medusa Build terminado ===="
-      
-      echo "Contenido de .medusa/client"
-      ls -la .medusa/client
 
-      mkdir -p .medusa/server/admin
-      cp -r .medusa/client/* .medusa/server/admin/
-      echo "==== Admin copiado correctamente ===="
 
-      echo "Contenido de .medusa/server/admin después del copiado"
-      ls -la .medusa/server/admin
+      mkdir -p .medusa/server-temp
+      cp -r .medusa/server/* .medusa/server-temp/
 
       yarn build
       echo "==== Backend Build terminado ===="
+
+      mkdir -p .medusa/server
+      cp -r .medusa/server-temp/* .medusa/server/
+
+      echo "==== Admin y Server restaurado correctamente ===="
+
     startCommand: |
       echo "==== Iniciando Start Command ===="
       echo "Directorio actual:"
