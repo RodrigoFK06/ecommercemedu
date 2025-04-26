@@ -15,13 +15,13 @@ services:
 
 
       mkdir -p .medusa/server-temp
-      cp -r .medusa/server/* .medusa/server-temp/
+      cp -r .medusa/server .medusa/server-temp/
 
       yarn build
       echo "==== Backend Build terminado ===="
 
-      mkdir -p .medusa/server
-      cp -r .medusa/server-temp/* .medusa/server/
+      rm -rf .medusa/server
+      cp -r .medusa/server-temp/server .medusa/server
 
       echo "==== Admin y Server restaurado correctamente ===="
 
