@@ -6,9 +6,14 @@ services:
     plan: free
     buildCommand: |
       yarn install --frozen-lockfile
+      echo "==== Instalado dependencias ===="
       yarn medusa build
+      echo "==== Medusa build terminado ===="
+      ls -la .medusa/client
       cp -r .medusa/client .medusa/server/admin
+      echo "==== Admin copiado ===="
       yarn build
+      echo "==== Backend build terminado ===="
     startCommand: yarn start
     autoDeploy: true
     envVars:
