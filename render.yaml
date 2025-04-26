@@ -5,16 +5,34 @@ services:
     rootDir: apps/medusa
     plan: free
     buildCommand: |
+      echo "==== Iniciando Build ===="
       yarn install --frozen-lockfile
+      echo "==== Dependencias instaladas ===="
+      
       yarn medusa build
-      echo "==== Medusa build terminado ===="
+      echo "==== Medusa Build terminado ===="
+      
+      echo "Contenido de .medusa/client"
       ls -la .medusa/client
+
       mkdir -p .medusa/server/admin
       cp -r .medusa/client/* .medusa/server/admin/
       echo "==== Admin copiado correctamente ===="
+
+      echo "Contenido de .medusa/server/admin después del copiado"
+      ls -la .medusa/server/admin
+
       yarn build
-      echo "==== Backend build terminado ===="
-    startCommand: PORT=${PORT:-9000} yarn start
+      echo "==== Backend Build terminado ===="
+    startCommand: |
+      echo "==== Iniciando Start Command ===="
+      echo "Directorio actual:"
+      pwd
+      echo "Contenido actual:"
+      ls -la
+      echo "Contenido de .medusa/server/admin antes de iniciar:"
+      ls -la .medusa/server/admin || echo "No existe el directorio .medusa/server/admin"
+      PORT=${PORT:-9000} yarn start
     autoDeploy: true
     envVars:
       - key: NODE_ENV
