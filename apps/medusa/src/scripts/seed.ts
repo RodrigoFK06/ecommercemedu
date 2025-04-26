@@ -24,9 +24,9 @@ import type {
   IStoreModuleService,
 } from '@medusajs/types';
 import { seedProducts } from './seed/products';
-import { createProductReviewsWorkflow } from '@lambdacurry/medusa-product-reviews/workflows/create-product-reviews';
+//import { createProductReviewsWorkflow } from '@lambdacurry/medusa-product-reviews/workflows/create-product-reviews';
 import { generateReviewResponse, reviewContents, texasCustomers } from './seed/reviews';
-import { createProductReviewResponsesWorkflow } from '@lambdacurry/medusa-product-reviews/workflows/create-product-review-responses';
+//import { createProductReviewResponsesWorkflow } from '@lambdacurry/medusa-product-reviews/workflows/create-product-review-responses';
 
 export default async function seedDemoData({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER);
@@ -463,20 +463,20 @@ export default async function seedDemoData({ container }: ExecArgs) {
       });
     }
 
-    const { result: productReviewsResult } = await createProductReviewsWorkflow(container).run({
-      input: {
-        productReviews: productReviews,
-      },
-    });
-
-    await createProductReviewResponsesWorkflow(container).run({
-      input: {
-        responses: productReviewsResult.map((review) => ({
-          product_review_id: review.id,
-          content: generateReviewResponse(review),
-        })),
-      },
-    });
+//    const { result: productReviewsResult } = await createProductReviewsWorkflow(container).run({
+//      input: {
+//        productReviews: productReviews,
+//      },
+//    });
+//
+//    await createProductReviewResponsesWorkflow(container).run({
+  //    input: {
+    //    responses: productReviewsResult.map((review) => ({
+      //    product_review_id: review.id,
+        //  content: generateReviewResponse(review),
+        //})),
+      //},
+    // );
   }
 
   logger.info('Finished seeding product data.');

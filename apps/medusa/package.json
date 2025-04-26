@@ -13,7 +13,7 @@
     "medusa"
   ],
   "scripts": {
-    "nukedb": "docker compose down -v && docker compose up -d",
+    "nukedb": "docker-compose down -v && docker-compose up -d",
     "build": "medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
@@ -32,13 +32,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@lambdacurry/medusa-product-reviews": "0.0.7",
     "@medusajs/admin-sdk": "2.7.0",
     "@medusajs/cli": "2.7.0",
     "@medusajs/framework": "2.7.0",
+    "@medusajs/icons": "^2.7.1",
     "@medusajs/js-sdk": "2.7.0",
     "@medusajs/medusa": "2.7.0",
     "@medusajs/types": "2.7.0",
+    "@medusajs/ui": "^4.0.9",
     "@mikro-orm/core": "6.4.3",
     "@mikro-orm/knex": "6.4.3",
     "@mikro-orm/migrations": "6.4.3",

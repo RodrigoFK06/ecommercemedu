@@ -52,12 +52,12 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || 'supersecret',
     },
   },
-  plugins: [
-    {
-      resolve: '@lambdacurry/medusa-product-reviews',
-      options: {},
-    },
-  ],
+//  plugins: [
+//    {
+//      resolve: '@lambdacurry/medusa-product-reviews',
+//      options: {},
+//    },
+//  ],
   modules: [
     {
       resolve: '@medusajs/medusa/payment',
