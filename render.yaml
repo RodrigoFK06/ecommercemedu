@@ -5,9 +5,10 @@ services:
     rootDir: apps/medusa
     plan: free
     buildCommand: |
-      yarn install
-      yarn build
+      yarn install --frozen-lockfile
+      yarn medusa build
       cp -r .medusa/client .medusa/server/admin
+      yarn build
     startCommand: yarn start
     autoDeploy: true
     envVars:
