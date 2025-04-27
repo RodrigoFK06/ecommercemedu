@@ -78,6 +78,7 @@ module.exports = defineConfig({
     workflowEngineModule,
   ],
   admin: {
+    path: (process.env.ADMIN_PATH as `/${string}`) || `/app`,
     backendUrl: process.env.ADMIN_BACKEND_URL,
     vite: () => {
       return {

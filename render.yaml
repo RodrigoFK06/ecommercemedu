@@ -22,7 +22,7 @@ services:
       ls -la
       echo "Contenido de .medusa/server/admin antes de iniciar:"
       ls -la .medusa/server/admin || echo "No existe el directorio .medusa/server/admin"
-      PORT=${PORT:-9000} yarn start
+      PORT=9000 yarn start
     autoDeploy: true
     envVars:
       - key: NODE_ENV
