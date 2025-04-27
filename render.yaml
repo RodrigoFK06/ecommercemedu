@@ -15,15 +15,26 @@ services:
 
 
       mkdir -p .medusa/server-temp
-      cp -r .medusa/server .medusa/server-temp/
+      cp -r .medusa/server/* .medusa/server-temp/
+
+      mkdir -p .medusa/admin-temp
+      cp -r .medusa/server/public/admin .medusa/admin-temp/
 
       yarn build
       echo "==== Backend Build terminado ===="
 
-      rm -rf .medusa/server
-      cp -r .medusa/server-temp/server .medusa/server
 
-      echo "==== Admin y Server restaurado correctamente ===="
+      rm -rf .medusa/server
+      cp -r .medusa/server-temp/* .medusa/server/
+
+      mkdir -p .medusa/server/public
+      cp -r .medusa/admin-temp/admin .medusa/server/public/
+
+
+      rm -rf .medusa/server-temp
+      rm -rf .medusa/admin-temp
+
+      echo "==== Admin y Server restaurados correctamente ===="
 
     startCommand: |
       echo "==== Iniciando Start Command ===="

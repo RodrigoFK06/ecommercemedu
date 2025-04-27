@@ -9,5 +9,8 @@
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit",
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
 }
