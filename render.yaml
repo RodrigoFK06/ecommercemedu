@@ -6,10 +6,14 @@ services:
     plan: free
     buildCommand: |
       echo "==== Iniciando Build ===="
-
+      
       yarn install --frozen-lockfile
       yarn medusa build
-
+      
+      echo "==== Moviendo Admin Build ===="
+      mkdir -p .medusa/server/admin
+      cp -r .medusa/server/public/admin/. .medusa/server/admin/
+      
       echo "==== Build Terminado Correctamente ===="
 
     startCommand: |
