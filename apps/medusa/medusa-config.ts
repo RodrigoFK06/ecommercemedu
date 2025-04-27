@@ -39,11 +39,11 @@ module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
     databaseDriverOptions: {
-      ssl: false,
+      ssl: process.env.DB_SSL === "true" ? { rejectUnauthorized: false } : false,
     },
     redisUrl: REDIS_URL,
-
     redisPrefix: process.env.REDIS_PREFIX,
+    workerMode: (process.env.MEDUSA_WORKER_MODE || "server") as "server" | "worker" | "shared",
     http: {
       storeCors: process.env.STORE_CORS || '',
       adminCors: process.env.ADMIN_CORS || '',
@@ -52,12 +52,7 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || 'supersecret',
     },
   },
-//  plugins: [
-//    {
-//      resolve: '@lambdacurry/medusa-product-reviews',
-//      options: {},
-//    },
-//  ],
+
   modules: [
     {
       resolve: '@medusajs/medusa/payment',
@@ -77,9 +72,10 @@ module.exports = defineConfig({
     eventBusModule,
     workflowEngineModule,
   ],
+
   admin: {
-    path: (process.env.ADMIN_PATH as `/${string}`) || `/app`,
-    backendUrl: process.env.ADMIN_BACKEND_URL,
+    path: (process.env.ADMIN_PATH as `/${string}`) || `/app`,    backendUrl: process.env.ADMIN_BACKEND_URL || "http://localhost:9000",
+    disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
     vite: () => {
       return {
         optimizeDeps: {
@@ -89,3 +85,4 @@ module.exports = defineConfig({
     },
   },
 });
+
