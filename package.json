@@ -5,6 +5,7 @@
   "scripts": {
     "build": "turbo build",
     "start": "turbo start",
+    "predeploy": "medusa db:migrate",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "generate-env": "cp ./apps/medusa/.env.template ./apps/medusa/.env && cp ./apps/storefront/.env.template ./apps/storefront/.env",
