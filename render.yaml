@@ -10,19 +10,18 @@ services:
       yarn install --frozen-lockfile
       yarn medusa build
 
-      echo "==== Moviendo Admin Build ===="
-      mkdir -p .medusa/server/admin
-      cp -r .medusa/server/public/admin/* .medusa/server/admin/
-
       echo "==== Build Terminado Correctamente ===="
 
     startCommand: |
       echo "==== Iniciando Start Command ===="
+
       pwd
       ls -la
-      echo "Contenido de .medusa/server/admin antes de iniciar:"
-      ls -la .medusa/server/admin || echo "No existe el directorio .medusa/server/admin"
+      echo "Contenido de .medusa/server/public/admin antes de iniciar:"
+      ls -la .medusa/server/public/admin || echo "No existe el directorio .medusa/server/public/admin"
+
       PORT=9000 yarn start
+
     autoDeploy: true
     envVars:
       - key: NODE_ENV
