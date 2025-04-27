@@ -74,7 +74,8 @@ module.exports = defineConfig({
   ],
 
   admin: {
-    path: (process.env.ADMIN_PATH as `/${string}`) || `/app`,    backendUrl: process.env.ADMIN_BACKEND_URL || "http://localhost:9000",
+    path: "/app",
+    backendUrl: process.env.ADMIN_BACKEND_URL || "http://localhost:9000",
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
     vite: () => {
       return {
