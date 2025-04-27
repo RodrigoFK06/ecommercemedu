@@ -31,9 +31,8 @@
     "test:unit": "TEST_TYPE=unit NODE_OPTIONS=--experimental-vm-modules jest --silent --runInBand --forceExit",
     "medusa:init": "yarn run nukedb && npx medusa db:create --db medusa2 && yarn run migrate && yarn run sync && yarn run seed && yarn run add-user",
     "add-user": "npx medusa user --email admin@medusa-test.com --password supersecret && npx medusa user --email admin@lambdacurry.dev --password password",
-    "typecheck": "tsc --noEmit"},
-
-
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "@medusajs/admin-sdk": "2.7.0",
     "@medusajs/cli": "2.7.0",
