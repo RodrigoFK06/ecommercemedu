@@ -22,8 +22,7 @@ services:
       pwd
       ls -la
       echo "Contenido de .medusa/server/public/admin antes de iniciar:"
-      ls -la .medusa/server/public/admin || echo "No existe el directorio .medusa/server/public/admin"
-
+      ls -la .medusa/server/admin || echo "No existe el directorio .medusa/server/admin"
       PORT=9000 yarn start
 
     autoDeploy: true
